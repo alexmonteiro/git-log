@@ -6,7 +6,7 @@ Gem::Specification.new do |gem|
   gem.email         = ["alexmonteiro@gmail.com"]
   gem.description   = %q{"Get logs from local git project and put it on a collection"}
   gem.summary       = %q{"GitLog was created to provide a developer tool to easy access the commits logs of local folder project"}
-  gem.homepage      = ""
+  gem.homepage      = "https://github.com/alexmonteiro/git-log.git"
 
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
