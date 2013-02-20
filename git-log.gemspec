@@ -10,7 +10,7 @@ Gem::Specification.new do |gem|
 
   #gem.files         = `git ls-files`.split($\)
   ignores = File.readlines(".gitignore").grep(/\S+/).map {|s| s.chomp }
-  dotfiles = [".gemtest", ".gitignore", ".rspec", ".yardopts"]
+  dotfiles = [".gitignore"]
   gem.files = Dir["**/*"].reject {|f| File.directory?(f) || ignores.any? {|i| File.fnmatch(i, f) } } + dotfiles
   
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
