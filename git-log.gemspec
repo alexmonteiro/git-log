@@ -8,7 +8,11 @@ Gem::Specification.new do |gem|
   gem.summary       = %q{"GitLog was created to provide a developer tool to easy access the commits logs of local folder project"}
   gem.homepage      = "https://github.com/alexmonteiro/git-log.git"
 
-  gem.files         = `git ls-files`.split($\)
+  #gem.files         = `git ls-files`.split($\)
+  ignores = File.readlines(".gitignore").grep(/\S+/).map {|s| s.chomp }
+  dotfiles = [".gemtest", ".gitignore", ".rspec", ".yardopts"]
+  gem.files = Dir["**/*"].reject {|f| File.directory?(f) || ignores.any? {|i| File.fnmatch(i, f) } } + dotfiles
+  
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.name          = "git-log"
